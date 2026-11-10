@@ -1,22 +1,39 @@
 /* Core Variables & Reset */
 :root {
-    --primary-green: #2e8b57;
-    --light-green: #e9f5ec;
-    --dark-green: #1b4d30;
+    --primary-green: #00ffcc; /* Cyberpunk/Energy vibe */
+    --light-green: #f0fdfa;
+    --dark-green: #0f172a;
     --white: #ffffff;
-    --text-dark: #333333;
-    --text-light: #666666;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+}
+
+/* Dark Mode Theme Variables */
+[data-theme="dark"] {
+    --primary-green: #00ffcc;
+    --light-green: #1e293b;
+    --dark-green: #00ffcc;
+    --white: #0f172a;
+    --text-dark: #f8fafc;
+    --text-light: #cbd5e1;
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --border-color: #334155;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--white);
+    background-color: var(--bg-color);
     color: var(--text-dark);
     line-height: 1.6;
     display: flex;
@@ -26,7 +43,7 @@ body {
 
 /* Navigation Bar */
 .navbar {
-    background-color: var(--white);
+    background-color: var(--card-bg);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
@@ -40,28 +57,36 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .logo {
-    font-family: Georgia, serif;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--primary-green);
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-dark);
     text-decoration: none;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.logo span {
+    color: var(--primary-green);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 20px;
+    align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
     transition: color 0.3s ease;
 }
 
@@ -83,20 +108,23 @@ main {
 /* Page Headers */
 .page-title {
     text-align: center;
-    color: var(--dark-green);
+    color: var(--text-dark);
     font-size: 2.5rem;
     margin-bottom: 40px;
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
-/* Two-Column Layout (Used across pages) */
+/* Two-Column Layout */
 .split-layout {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     align-items: center;
-    background-color: var(--light-green);
+    background-color: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .split-image {
@@ -106,6 +134,7 @@ main {
 .split-image img {
     width: 100%;
     height: 100%;
+    min-height: 300px;
     object-fit: cover;
     display: block;
 }
@@ -116,9 +145,10 @@ main {
 }
 
 .split-text h2 {
-    color: var(--dark-green);
+    color: var(--text-dark);
     margin-bottom: 20px;
-    font-size: 2rem;
+    font-size: 2.2rem;
+    text-transform: uppercase;
 }
 
 .split-text p {
@@ -127,22 +157,50 @@ main {
     font-size: 1.1rem;
 }
 
+/* Table styling for dark mode */
+.ingredients-table {
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+}
+.ingredients-table th {
+    background-color: var(--primary-green) !important;
+    color: #0f172a !important; /* Force dark text on bright green */
+}
+
 /* Buttons */
 .btn-primary {
     background-color: var(--primary-green);
-    color: var(--white);
+    color: #0f172a;
     border: none;
-    padding: 12px 25px;
+    padding: 12px 30px;
     font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 6px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-primary:hover {
-    background-color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.4);
 }
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-secondary:hover {
+    background-color: var(--text-dark);
+    color: var(--bg-color);
+}
+
 
 /* Forms */
 .contact-form {
@@ -152,20 +210,25 @@ main {
 }
 
 .contact-form input, .contact-form textarea {
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-dark);
     border-radius: 6px;
     font-size: 1rem;
     font-family: inherit;
 }
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: 2px solid var(--primary-green);
+}
 
 /* Footer */
 footer {
-    background-color: var(--dark-green);
-    color: var(--white);
+    background-color: var(--card-bg);
+    color: var(--text-light);
     text-align: center;
-    padding: 20px;
-    margin-top: auto;
+    padding: 30px;
+    border-top: 1px solid var(--border-color);
 }
 
 /* Toast */
@@ -174,13 +237,28 @@ footer {
     bottom: 30px;
     right: 30px;
     background-color: var(--primary-green);
-    color: var(--white);
+    color: #0f172a;
     padding: 15px 25px;
     border-radius: 8px;
+    font-weight: bold;
     opacity: 1;
     transition: opacity 0.5s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 .toast.hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+/* Gallery hover effects */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+}
+.gallery-item img {
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.05);
 }
