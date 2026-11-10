@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINETix | Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">KINETix</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="page-title">Get in Touch</h1>
+        
+        <section class="split-layout">
+            <div class="split-image">
+                <img src="images/office.jpg" alt="Modern KINETix office reception">
+            </div>
+            <div class="split-text">
+                <h2>Send us a message</h2>
+                <p>Have questions about wholesale, sponsorships, or our ingredients? Drop us a line below.</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KINETix Electric Lime. Lab Project 26i-3018.</p>
+    </footer>
+
+    <div id="toastNotification" class="toast hidden"></div>
+</body>
+</html>
