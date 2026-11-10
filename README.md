@@ -4,4 +4,4 @@ Section: SE-A
 Theme: Navy Blue and white, gave user option to change theme
 Page: Home, About,  Contact us
 Ai Tools used: Gemini
-Link of wesite:
+Link of wesite: https://saoodkhan-i26-3018.github.io/Energy-Drink-Launch-Page/index.html
